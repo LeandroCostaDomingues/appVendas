@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.com.LeandroCosta.appVendas.domain.Categoria;
+import com.com.LeandroCosta.appVendas.dto.CategoriaDTO;
 import com.com.LeandroCosta.appVendas.repositories.CategoriaRepository;
 import com.com.LeandroCosta.appVendas.services.exceptions.DataIntegrityException;
 import com.com.LeandroCosta.appVendas.services.exceptions.ObjectNotFoundException;
@@ -56,5 +57,12 @@ public class CategoriaService {
 				orderBy);
 		return repo.findAll(pageRequest);
 		 // metodo para paginação 
+	}
+	public Categoria fromDto(CategoriaDTO objDto) {
+		// para instaciar uma categoria apartir dto
+		return  new Categoria(objDto.getId(),objDto.getNome());
+		
+		
+		
 	}
 }

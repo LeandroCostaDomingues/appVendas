@@ -2,22 +2,31 @@ package com.com.LeandroCosta.appVendas.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.com.LeandroCosta.appVendas.domain.Categoria;
 
 public class CategoriaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
+	
+	@NotEmpty(message = "Preenchimento obrigatorio")
+	@Length(min =5,max =80 ,message =" o Tamanhos deve ser de 5e 80 caracteres")
 	private String nome;
 
 	public CategoriaDTO() {
 
 	}
-public CategoriaDTO(Categoria obj) {
-	
-	id = obj.getId();
-	nome = obj.getnome();
-}
+
+	public CategoriaDTO(Categoria obj) {
+
+		id = obj.getId();
+		nome = obj.getnome();
+	}
+
 	public Integer getId() {
 		return id;
 	}
